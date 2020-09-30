@@ -1,18 +1,15 @@
-#Configuration File
-
-imagePath : null
-matrixPath : null
-domain:
-      s: False #Spatial Domain 
-      f: False #Frequency Domain
-spatial :
-      laplace :  False    #Laplacian Filter
-      sobel :    False    #Sobel Filter
-      prewitt :  False    #Prewitt Filter
-      gaussian : False    #Gaussian Filter
-      avg :      False    # Mean Filter
-      max:       False    #Max Filter 
-      min :      False    #Min Filter
-      median :   False    #Mediam Filter
-
-
+frequency:
+  dct: false
+  dft: false
+  haar: false
+imagePath: \Users\
+matrixPath: sample
+spatial:
+  avg: true
+  gaussian: false
+  laplace: false
+  max: true
+  median: false
+  min: true
+  prewitt: false
+  sobel: false
