@@ -2,10 +2,10 @@ frequency:
   dct: false
   dft: false
   haar: false
-imagePath: \Users\
-matrixPath: sample
+imagePath: sample
+matrixPath: null
 spatial:
-  avg: true
+  avg: false
   gaussian: false
   laplace: false
   max: true

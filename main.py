@@ -1,5 +1,6 @@
 import yaml
 import argparse
+from mainClass import imgClass
 
 parser = argparse.ArgumentParser(description='Set up Config File')
 
@@ -27,8 +28,12 @@ else:
         filterList = args.s.split(",")
         for i in filterList:
             cfg["spatial"][i] = True
-#print(filterList)
+
+
 with open('config.yaml', "w") as f:
     yaml.dump(cfg, f)
+
+x = imgClass(cfg)
+print(x.filter)
 
 
