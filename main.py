@@ -1,16 +1,14 @@
 import yaml
 import argparse
-from mainClass import imgClass
+from dataLoaderClass import dataLoader
+from spatialFilters import filterClass
 
 parser = argparse.ArgumentParser(description='Set up Config File')
-
 parser = argparse.ArgumentParser()
 parser.add_argument('--imagePath', type=str, default="", required= False, help='Location of image')
 parser.add_argument('--matrixPath', type=str, default="", required = False , help='Location of file containing matrix')
 parser.add_argument('--s', type=str, required = False , help='Filters in spatial domain separated by commas')
 parser.add_argument('--f', type=str, required = False , help='Filters in frequency domain separated by commas')
-
-
 args = parser.parse_args()
 
 #Updated Configuration File
@@ -33,8 +31,16 @@ else:
 with open('config.yaml', "w") as f:
     yaml.dump(cfg, f)
 
-x = imgClass(cfg)
-x.execute()
+x = dataLoader(cfg)
+imgR = x.execute()
+
+
+obj = filterClass()
+for i in cfg["spatial"]:
+    if cfg["spatial"][i] is True:
+        method = getattr(obj,i)
+        method(imgR)
+
 
 
 

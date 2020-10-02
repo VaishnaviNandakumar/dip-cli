@@ -7,13 +7,12 @@ import matplotlib.image as mpimg
 
 from spatialFilters import *
 
-class imgClass:
+class dataLoader:
     def __init__(self, cfg):
         self.path   = cfg["imagePath"]
-        self.filter = cfg["spatial"]
         self.height = 300
         self.width  = 300
-        self.methods = {'laplacian':laplacian}
+        
 
     def loadImage(self):
         #Loads Image
@@ -24,17 +23,12 @@ class imgClass:
 
         #Converts to numpy array
         img = np.array(imgResize)
-        self.imgPadded = np.pad(img,((1,1),(1,1),(0,0)),'constant') 
-
-    def callFilters(self):
-        for i in self.filter:
-            if self.filter[i] is True:
-                self.methods[i](self.imgPadded)
-                
+        self.imgPadded = np.pad(img,((1,1),(1,1),(0,0)),'constant')             
 
     def execute(self):
         self.loadImage()
-        self.callFilters()
+        return self.imgPadded
+        
 
             
             
