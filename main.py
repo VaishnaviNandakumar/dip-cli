@@ -34,6 +34,7 @@ with open('config.yaml', "w") as f:
     yaml.dump(cfg, f)
 
 x = imgClass(cfg)
-print(x.filter)
+x.execute()
+
 
 

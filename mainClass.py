@@ -3,11 +3,9 @@ import pandas as pd
 from PIL import Image
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
-import skimage.transform as st
+#import skimage.transform as st
 
 from spatialFilters import *
-
-
 
 class imgClass:
     def __init__(self, cfg):
@@ -15,6 +13,7 @@ class imgClass:
         self.filter = cfg["spatial"]
         self.height = 300
         self.width  = 300
+        self.methods = {'laplacian':laplacian}
 
     def loadImage(self):
         #Loads Image
@@ -25,10 +24,23 @@ class imgClass:
 
         #Converts to numpy array
         img = np.array(imgResize)
-        imgPadded = np.pad(img,((1,1),(1,1),(0,0)),'constant') 
+        self.imgPadded = np.pad(img,((1,1),(1,1),(0,0)),'constant') 
 
     def callFilters(self):
-    for i in self
+        for i in self.filter:
+            if self.filter[i] is True:
+                self.methods[i](self.imgPadded)
+                
+
+    def execute(self):
+        self.loadImage()
+        self.callFilters()
+
+            
+            
+    
+        
+#C:\Users\ACER\Desktop\dip-cli\sample.png
 
 
 

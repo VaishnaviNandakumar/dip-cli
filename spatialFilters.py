@@ -2,7 +2,9 @@ import numpy as np
 from PIL import Image
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
-import skimage.transform as st
+#import skimage.transform as st
+h= 300
+w= 300
 
 #Laplacian Filter
 laplacianFilter = np.array([[0,1,0],[1,-4,1],[0,1,0]])
@@ -22,34 +24,35 @@ def conv(mat1, mat2):
     return np.sum(val)
 
 def splitChannels(mat, filter):
-redChannel = []
-greenChannel = []
-blueChannel = []
-for i in range(3):
-    l1 = []
-    l2 = []
-    l3 = []
-    for j in range(3):
-    r = mat[i][j][0]
-    g = mat[i][j][1]
-    b = mat[i][j][2]
-    l1.append(r)
-    l2.append(g)
-    l3.append(b)
-    redChannel.append(l1)
-    greenChannel.append(l2)
-    blueChannel.append(l3)
-#print(redChannel)
-#print(greenChannel)
-#print(blueChannel)
-x = conv(redChannel, filter)
-y = conv(greenChannel, filter)
-z = conv(blueChannel, filter)
-return x, y, z
+    redChannel = []
+    greenChannel = []
+    blueChannel = []
+    for i in range(3):
+        l1 = []
+        l2 = []
+        l3 = []
+        for j in range(3):
+            r = mat[i][j][0]
+            g = mat[i][j][1]
+            b = mat[i][j][2]
+            l1.append(r)
+            l2.append(g)
+            l3.append(b)
+            redChannel.append(l1)
+            greenChannel.append(l2)
+            blueChannel.append(l3)
+    #print(redChannel)
+    #print(greenChannel)
+    #print(blueChannel)
+    x = conv(redChannel, filter)
+    y = conv(greenChannel, filter)
+    z = conv(blueChannel, filter)
+    return x, y, z
 
 
 #Main Function - Laplace Filter
-def laplacian():
+def laplacian(imgPadded):
+    #print("reached laplacian")
     filter = laplacianFilter
     ans = []
     for i in range(0, w-2):
@@ -69,10 +72,11 @@ def laplacian():
             temp.append(x)
         ans.append(temp)
     plt.imshow(ans)
+    plt.show()
 
 
-    #Main Function - Sobel Filter
-    def sobel(): 
+#Main Function - Sobel Filter
+def sobel(imgPadded): 
     #Setting Filter
     filterX = sobelX
     filterY = sobelY
@@ -98,8 +102,8 @@ def laplacian():
     plt.imshow(ans)
 
 
-    #Main Function - Prewitt Filter
-    def prewitt(): 
+#Main Function - Prewitt Filter
+def prewitt(imgPadded): 
     #Setting Filter
     filterX = prewittX
     filterY = prewittY
@@ -128,5 +132,4 @@ def laplacian():
         return np.dot(rgb[::3], [0.2989, 0.5870, 0.1140])
 
     gray = np.array(rgb2gray(ans))
-    plt.imshow(st.resize(gray, (300, 300)), cmap=plt.get_cmap('gray'))
-  
+    #plt.imshow(st.resize(gray, (300, 300)), cmap=plt.get_cmap('gray'))

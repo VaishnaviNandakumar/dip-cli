@@ -3,7 +3,7 @@
 imagePath : null
 matrixPath : null
 spatial :
-      laplace :  False    #Laplacian Filter
+      laplacian :  False    #Laplacian Filter
       sobel :    False    #Sobel Filter
       prewitt :  False    #Prewitt Filter
       gaussian : False    #Gaussian Filter

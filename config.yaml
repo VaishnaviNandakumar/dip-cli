@@ -2,14 +2,14 @@ frequency:
   dct: false
   dft: false
   haar: false
-imagePath: sample
+imagePath: C:\Users\ACER\Desktop\dip-cli\sample.png
 matrixPath: null
 spatial:
   avg: false
   gaussian: false
-  laplace: false
-  max: true
+  laplacian: true
+  max: false
   median: false
-  min: true
+  min: false
   prewitt: false
   sobel: false
