@@ -1,7 +1,7 @@
 #Configuration File
 
-imagePath : null
-matrixPath : null
+path: null
+type: null
 spatial :
       laplacian :  False    #Laplacian Filter
       sobel :    False    #Sobel Filter

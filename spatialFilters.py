@@ -76,7 +76,7 @@ class filterClass:
 
 
     #Main Function - Sobel Filter
-    def sobel(imgPadded): 
+    def sobel(self,imgPadded): 
         #Setting Filter
         filterX = sobelX
         filterY = sobelY
@@ -91,8 +91,8 @@ class filterClass:
                         l.append(imgPadded[k][q])
                     mat.append(l)
 
-                val1 = splitChannels(mat, filterX)
-                val2 = splitChannels(mat, filterY)
+                val1 = self.splitChannels(mat, filterX)
+                val2 = self.splitChannels(mat, filterY)
                 
                 x = np.add(list(val1), list(val2))
                 
@@ -100,6 +100,7 @@ class filterClass:
                 temp.append(x)
             ans.append(temp)
         plt.imshow(ans)
+        plt.show()
 
 
     #Main Function - Prewitt Filter

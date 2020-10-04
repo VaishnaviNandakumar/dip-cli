@@ -9,7 +9,7 @@ from spatialFilters import *
 
 class dataLoader:
     def __init__(self, cfg):
-        self.path   = cfg["imagePath"]
+        self.path   = cfg["path"]
         self.height = 300
         self.width  = 300
         
@@ -32,9 +32,6 @@ class dataLoader:
 
             
             
-    
-        
-#C:\Users\ACER\Desktop\dip-cli\sample.png
 
 
 
