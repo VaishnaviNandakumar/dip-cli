@@ -2,7 +2,7 @@
 A cli to perform image processing filters
 
 ### Things to do
-1. Make a config yaml file
+1. Make a config yaml file - Done
    - Input
        - Path to CSV image
        - Matrix
