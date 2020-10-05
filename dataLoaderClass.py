@@ -12,13 +12,13 @@ from spatialFilters import *
 class dataLoader:
     def __init__(self, cfg):
         self.path   = cfg["path"]
-        self.height = 300
-        self.width  = 300
+        self.height = cfg["height"]
+        self.width  = cfg["width"]
+        self.type   = cfg["type"]
         
 
     def loadImage(self):
-        
-        if cfg["type"] == "image":
+        if self.type == "image":
             #Loads Image
             imagePath = Image.open(self.path)
             #Resizes Image

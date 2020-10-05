@@ -1,11 +1,10 @@
 #Configuration File
-
 path: null
 type: null
 height: null
 width: null
 spatial :
-      laplacian :  False    #Laplacian Filter
+      laplacian :  False  #Laplacian Filter
       sobel :    False    #Sobel Filter
       prewitt :  False    #Prewitt Filter
       gaussian : False    #Gaussian Filter

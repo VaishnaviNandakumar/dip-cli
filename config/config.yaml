@@ -2,7 +2,8 @@ frequency:
   dct: false
   dft: false
   haar: false
-path: C:\Users\ACER\Desktop\dip-cli\test.txt
+height: 300
+path: C:\Users\ACER\Desktop\dip-cli\images\sample.png
 spatial:
   avg: false
   gaussian: false
@@ -12,4 +13,5 @@ spatial:
   min: false
   prewitt: false
   sobel: false
-type: text
+type: image
+width: 300
