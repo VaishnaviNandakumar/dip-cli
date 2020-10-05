@@ -24,8 +24,8 @@ if bool(args.p) is False:
 else:
     cfg["path"] = args.p
     #Determine file format
+
     kind = magic.from_file(cfg["path"], mime = True)
-    print(kind)
     if kind.find("image")!=-1:
         cfg["type"] = "image"
     elif kind.find("text")!=-1:
@@ -46,7 +46,7 @@ with open('config\config.yaml', "w") as f:
 #Apply filters
 x = dataLoader(cfg)
 imgR = x.execute()
-
+#print(imgR)
 obj = filterClass()
 for i in cfg["spatial"]:
     if cfg["spatial"][i] is True:

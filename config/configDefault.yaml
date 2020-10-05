@@ -2,6 +2,8 @@
 
 path: null
 type: null
+height: null
+width: null
 spatial :
       laplacian :  False    #Laplacian Filter
       sobel :    False    #Sobel Filter

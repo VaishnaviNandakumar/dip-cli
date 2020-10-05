@@ -1,10 +1,17 @@
 import numpy as np
+import yaml
 from PIL import Image
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 #import skimage.transform as st
-h= 300
-w= 300
+
+
+
+with open("config\config.yaml") as f:
+    cfg = yaml.load(f, Loader = yaml.FullLoader)
+    h = cfg["height"]
+    w = cfg["width"]
+
 
 #Laplacian Filter
 laplacianFilter = np.array([[0,1,0],[1,-4,1],[0,1,0]])
@@ -65,13 +72,19 @@ class filterClass:
                         l.append(imgPadded[k][q])
                     mat.append(l)
 
-                val = self.splitChannels(mat, filter)
+                if cfg["type"] == "image":
+                    val = self.splitChannels(mat, filter)
+                    x = list(val)
+                else:
+                    val = self.conv(mat,filter)
+                    x = val
                 
-                x = list(val)
+                
                 #print(i,j)
                 temp.append(x)
             ans.append(temp)
         plt.imshow(ans)
+        print(ans)
         plt.show()
 
 
