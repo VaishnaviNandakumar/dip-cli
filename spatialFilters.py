@@ -3,6 +3,7 @@ import yaml
 from PIL import Image
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
+from scipy import stats
 #import skimage.transform as st
 
 
@@ -32,10 +33,30 @@ class filterClass:
                 redChannel.append(l1)
                 greenChannel.append(l2)
                 blueChannel.append(l3)
+        if filter == "max":
+            x  = np.array(redChannel).max()
+            y  = np.array(greenChannel).max()
+            z  = np.array(blueChannel).max()
+
+        elif filter == "min":
+            x  = np.array(redChannel).min()
+            y  = np.array(greenChannel).min()
+            z  = np.array(blueChannel).min()
         
-        x = self.conv(redChannel, filter) 
-        y = self.conv(greenChannel, filter) 
-        z = self.conv(blueChannel, filter)
+        elif filter == "median":
+            x  = int(np.median(redChannel))
+            y  = int(np.median(greenChannel))
+            z  = int(np.median(blueChannel))
+            
+        elif filter == "mean":
+            x  = int(np.mean(redChannel))
+            y  = int(np.mean(greenChannel))
+            z  = int(np.mean(blueChannel))
+
+        else:
+            x = self.conv(redChannel, filter) 
+            y = self.conv(greenChannel, filter) 
+            z = self.conv(blueChannel, filter)
 
         return x, y, z
 
@@ -90,10 +111,11 @@ class filterClass:
         filterY = sobelY
         
         val1 = self.block(imgPadded, filterX)
-        val2 = self.block(imgPadded, filterX)        
+        val2 = self.block(imgPadded, filterY)        
         answer = np.add(val1, val2)  
         plt.imshow(answer)
-        plt.show()
+        print(answer[0][0])
+        #plt.show()
 
 
     #Main Function - Prewitt Filter
@@ -106,14 +128,40 @@ class filterClass:
         filterY = prewittY
 
         val1 = self.block(imgPadded, filterX)
-        val2 = self.block(imgPadded, filterX)        
+        val2 = self.block(imgPadded, filterY)        
         answer = np.add(val1, val2)  
         plt.imshow(answer)
         plt.show()
+
     
+    def max(self, imgPadded):
+        filter = "max"
+        answer = self.block(imgPadded, filter)
+        plt.imshow(answer)
+        plt.show()
+
+    def min(self, imgPadded):
+        filter = "min"
+        answer = self.block(imgPadded, filter)
+        plt.imshow(answer)
+        plt.show()
+
+    def median(self, imgPadded):
+        filter = "median"
+        answer = self.block(imgPadded, filter)
+        plt.imshow(answer)
+        plt.show()
+
+    def avg(self, imgPadded):
+        filter = "mean"
+        answer = self.block(imgPadded, filter)
+        plt.imshow(answer)
+        plt.show()
+
     #Conversion to grayscale
-    '''def rgb2gray(rgb):
-        return np.dot(rgb[::3], [0.2989, 0.5870, 0.1140])
+    def rgb2gray(self, rgb):
+        ans =  np.dot(rgb[::3], [0.2989, 0.5870, 0.1140])
         gray = np.array(rgb2gray(ans))
-        #plt.imshow(st.resize(gray, (300, 300)), cmap=plt.get_cmap('gray'))
-    '''
+        plt.imshow(st.resize(gray, (300, 300)), cmap=plt.get_cmap('gray'))
+        plt.show()
+    

@@ -11,7 +11,9 @@ spatial :
       avg :      False    #Mean Filter
       max:       False    #Max Filter 
       min :      False    #Min Filter
-      median :   False    #Mediam Filter
+      median :   False    #Median Filter
+      mode : False
+     
 
 frequency :
       dft : False #Discrete Fourier Transform
