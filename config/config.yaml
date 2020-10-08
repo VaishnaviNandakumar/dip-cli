@@ -1,11 +1,11 @@
 frequency:
   dct: false
-  dft: false
+  dft: true
   haar: false
 height: 300
 path: C:\Users\ACER\Desktop\dip-cli\images\sample.png
 spatial:
-  avg: true
+  avg: false
   gaussian: false
   laplacian: false
   max: false

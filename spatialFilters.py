@@ -4,12 +4,9 @@ from PIL import Image
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 from scipy import stats
-#import skimage.transform as st
+import skimage.transform as st
 
-
-    
-class filterClass:
-
+class spatialFilterClass:
     def __init__(self, cfg):
         self.h = cfg["height"]
         self.w = cfg["width"]
@@ -61,17 +58,12 @@ class filterClass:
         return x, y, z
 
     def block(self, imgPadded, filter):
-
         ans = []
-
         for i in range(0, self.h):
             temp = []
-
             for j in range(0, self.w):
-
                 mat = []
                 for k in range(i, i+3):
-
                     l = []
                     for q in range(j, j+3):
                         l.append(imgPadded[k][q])

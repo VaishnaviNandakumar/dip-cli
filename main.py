@@ -2,7 +2,8 @@ import yaml
 import argparse
 import magic
 from dataLoaderClass import dataLoader
-from spatialFilters import filterClass
+from spatialFilters import spatialFilterClass
+from frequencyFilters import frequencyFilterClass
 
 #Sample - python main.py --p C:\Users\ACER\Desktop\dip-cli\images\sample.png --s laplacian
 #Parse Arguments
@@ -16,15 +17,6 @@ args = parser.parse_args()
 
 
 
-def callFilters(cfg):
-    #Apply filters
-    x = dataLoader(cfg)
-    imgR = x.execute()
-    obj = filterClass(cfg)
-    for i in cfg["spatial"]:
-        if cfg["spatial"][i] is True:
-            method = getattr(obj,i)
-            method(imgR)
 
 def main():
     with open("config\configDefault.yaml") as f:          
@@ -51,11 +43,17 @@ def main():
             filterList = args.s.split(",")
             for i in filterList:
                 cfg["spatial"][i] = True
+        if args.f:
+            filterList = args.f.split(",")
+            for i in filterList:
+                cfg["frequency"][i] = True
 
     with open('config\config.yaml', "w") as f:              #Updated Configuration File
         yaml.dump(cfg, f)
         
-    callFilters(cfg)
+    #callFilters(cfg)
+    x = dataLoader(cfg)
+    imgR = x.execute()
 
 
 if __name__ == "__main__":
