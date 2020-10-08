@@ -19,5 +19,7 @@ frequency :
       dft : False #Discrete Fourier Transform
       dct : False #Discrete Cosine Transform
       haar: False #Haar Transform
+      start: False
+      
 
 

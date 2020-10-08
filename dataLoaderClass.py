@@ -39,7 +39,7 @@ class dataLoader:
                 matrix.append([int(x) for x in row.split()])
             
             self.img = np.array(matrix)
-            self.imgPadded = np.pad(img, [(1, 1), (1, 1)], mode='constant')
+            self.imgPadded = np.pad(self.img, [(1, 1), (1, 1)], mode='constant')
                  
 
     def execute(self):
