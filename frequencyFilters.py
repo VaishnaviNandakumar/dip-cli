@@ -15,22 +15,22 @@ class frequencyFilterClass:
 
     def splitChannels(self, mat):
         redChannel, greenChannel, blueChannel = [] , [] , []
-        for i in range(3):
+        for i in range(self.h):
             l1, l2, l3 = [] , [] , []
-            for j in range(3):
+            for j in range(self.w):
                 r,g,b = mat[i][j][0], mat[i][j][1], mat[i][j][2]
                 
                 l1.append(r)
                 l2.append(g)
                 l3.append(b)
 
-                redChannel.append(l1)
-                greenChannel.append(l2)
-                blueChannel.append(l3)
-        return redChannel, blueChannel, greenChannel
+            redChannel.append(l1)
+            greenChannel.append(l2)
+            blueChannel.append(l3)
+        return redChannel, greenChannel, blueChannel
 
     def gaussian(self, dist):
-        D0 = 1.2
+        D0 = 40
         gaussianFilter = []
         for i in range(self.h):
             l = []
@@ -69,25 +69,42 @@ class frequencyFilterClass:
 
 
     def start(self, img):
-        '''r,g,b = self.splitChannels(img)
-        r = self.dft(self.mul(r))
-        g = self.dft(self.mul(g))
-        b = self.dft(self.mul(b))
-        dist = distCalc(h,w)
-        x = gaussian(dist)
-        r,g,b = map(x,[r,g,b])
-        r,g,b = map(idft, [r,g,b])
-        r,g,b = map(idft, [r,g,b])'''
-        img  = self.dft(img)
-        dist = self.distCalc(self.h,self.w)
-        #print("Distance", dist)
-        x = self.gaussian(dist)
-        print('Filter', x)
-        y = np.multiply(x,img)
-        ift = self.idft(y)
-        z = ift.real
-        ans = self.mul(z)
-        #print(ans)
-        plt.imshow(ans)
-        plt.show()
+    
+        if self.type =="image":
+            r,g,b = self.splitChannels(img)
+            r = self.dft(self.mul(r))
+            g = self.dft(self.mul(g))
+            b = self.dft(self.mul(b))
+            
+            dist = self.distCalc(self.h,self.w)
+            M = self.gaussian(dist) 
+            
+            x = self.mul(self.idft(np.multiply(r,M)).real)
+            y = self.mul(self.idft(np.multiply(g,M)).real)
+            z = self.mul(self.idft(np.multiply(b,M)).real)
+            
+            op = img
+            for i in range(self.h):
+                for j in range(self.w):
+                    op[i][j][0] = int(x[i][j])
+                    op[i][j][1] = int(y[i][j])
+                    op[i][j][2] = int(z[i][j])
+              
+            plt.imshow(op)
+            plt.show()
+
+            
+        else:
+            img  = self.dft(img)
+            dist = self.distCalc(self.h,self.w)
+            #print("Distance", dist)
+            x = self.gaussian(dist)
+            #print('Filter', x)
+            y = np.multiply(x,img)
+            ift = self.idft(y)
+            z = ift.real
+            ans = self.mul(z)
+            #print(ans)
+            plt.imshow(ans)
+            plt.show()
 
