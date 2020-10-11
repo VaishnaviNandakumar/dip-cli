@@ -41,6 +41,20 @@ class frequencyFilterClass:
             gaussianFilter.append(l)
         
         return gaussianFilter
+    
+    def  butterworth(self, dist):
+        D0 = 20
+        n = 1.2
+        butterworthFilter = []
+        for i in range(self.h):
+            l = []
+            for j in range(self.w):
+                x = (dist[i][j]/D0)**(2*n)
+                val = 1/(1+x)
+                l.append(val)
+            butterworthFilter.append(l)
+        return butterworthFilter
+
 
     def mul(self, matrix):
         for i in range(self.h):
@@ -64,8 +78,22 @@ class frequencyFilterClass:
             for j in range(-n,n+1,1):
                 l.append(math.sqrt(i**2+j**2))
             dist.append(l)
-
         return dist   
+    
+    def ideal(self, dist):
+        #D0 = 20 cool stuff
+        D0 = 10
+        idealFilter = []
+        for i in range(self.h):
+            l = []
+            for j in range(self.w):
+                if dist[i][j]>=D0:
+                    val = 1
+                else:
+                    val = 0
+                l.append(val)
+            idealFilter.append(l)
+        return idealFilter
 
 
     def start(self, img):
@@ -77,7 +105,10 @@ class frequencyFilterClass:
             b = self.dft(self.mul(b))
             
             dist = self.distCalc(self.h,self.w)
-            M = self.gaussian(dist) 
+            #M = self.gaussian(dist)
+            #M = self.butterworth(dist) 
+            M = self.ideal(dist)
+            
             
             x = self.mul(self.idft(np.multiply(r,M)).real)
             y = self.mul(self.idft(np.multiply(g,M)).real)

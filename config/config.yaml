@@ -3,7 +3,7 @@ frequency:
   dft: false
   haar: false
   start: true
-height: 300
+height: 303
 path: C:\Users\ACER\Desktop\dip-cli\images\sample.png
 spatial:
   avg: false
@@ -16,4 +16,4 @@ spatial:
   prewitt: false
   sobel: false
 type: image
-width: 300
+width: 303
