@@ -20,6 +20,9 @@ frequency :
       dct : False #Discrete Cosine Transform
       haar: False #Haar Transform
       start: False
+      butterworth : False
+      gaussian : False
+      ideal : False
       
 
 
