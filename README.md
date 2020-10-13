@@ -13,5 +13,9 @@ A cli to perform image processing filters
         - Save Image
         - Display Matrix
             
-2. Create Class
-3. Main file to parse arguments
+2. Create Class - Done
+3. Main file to parse arguments - Done
+4. Implement Inheritance + More modularity
+5. Add code to save results
+6. Clean Code
+
