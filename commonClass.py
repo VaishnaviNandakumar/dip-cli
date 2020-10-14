@@ -56,10 +56,6 @@ class dataLoader:
                 if self.frequency[i] is True:
                     method = getattr(self.objF,i)
                     method(self.img)
-
-        def save(self):
-            pass
-
         
         
 
