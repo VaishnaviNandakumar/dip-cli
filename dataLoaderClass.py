@@ -58,6 +58,7 @@ class dataLoader:
                     method(self.img)
 
         def save(self):
+            #Save function
             pass
 
         
