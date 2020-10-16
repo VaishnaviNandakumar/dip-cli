@@ -1,10 +1,4 @@
-import numpy as np
-import yaml
-from PIL import Image
-import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
-from scipy import stats
-import skimage.transform as st
+from base import *
 
 class spatialFilterClass:
     def __init__(self, cfg):
@@ -30,6 +24,7 @@ class spatialFilterClass:
                 redChannel.append(l1)
                 greenChannel.append(l2)
                 blueChannel.append(l3)
+                
         if filter == "max":
             x  = np.array(redChannel).max()
             y  = np.array(greenChannel).max()
@@ -150,10 +145,3 @@ class spatialFilterClass:
         plt.imshow(answer)
         plt.show()
 
-    #Conversion to grayscale
-    def rgb2gray(self, rgb):
-        ans =  np.dot(rgb[::3], [0.2989, 0.5870, 0.1140])
-        gray = np.array(rgb2gray(ans))
-        plt.imshow(st.resize(gray, (300, 300)), cmap=plt.get_cmap('gray'))
-        plt.show()
-    

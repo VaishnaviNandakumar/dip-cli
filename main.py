@@ -49,6 +49,7 @@ def main():
             filterList = args.f.split(",")
             for i in filterList:
                 cfg["frequency"][i] = True
+     
 
     with open('config\config.yaml', "w") as f:              #Updated Configuration File
         yaml.dump(cfg, f)

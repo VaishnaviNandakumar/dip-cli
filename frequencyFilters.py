@@ -1,33 +1,14 @@
-import numpy as np
-import yaml
-from PIL import Image
-import math
-import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
-from scipy import stats
-import skimage.transform as st
+from base import *
+
 
 class frequencyFilterClass:
     def __init__(self, cfg):
         self.h = cfg["height"]
         self.w = cfg["width"]
         self.type = cfg["type"]
+        self.cfg = cfg
 
-    def splitChannels(self, mat):
-        redChannel, greenChannel, blueChannel = [] , [] , []
-        for i in range(self.h):
-            l1, l2, l3 = [] , [] , []
-            for j in range(self.w):
-                r,g,b = mat[i][j][0], mat[i][j][1], mat[i][j][2]
-                
-                l1.append(r)
-                l2.append(g)
-                l3.append(b)
-
-            redChannel.append(l1)
-            greenChannel.append(l2)
-            blueChannel.append(l3)
-        return redChannel, greenChannel, blueChannel
+   
 
     def gaussian(self, dist):
         D0 = 40
@@ -54,6 +35,22 @@ class frequencyFilterClass:
                 l.append(val)
             butterworthFilter.append(l)
         return butterworthFilter
+    
+        def ideal(self, dist):
+            #D0 = 20 cool stuff
+            D0 = 10
+            idealFilter = []
+            for i in range(self.h):
+                l = []
+                for j in range(self.w):
+                    if dist[i][j]>=D0:
+                        val = 1
+                    else:
+                        val = 0
+                    l.append(val)
+                idealFilter.append(l)
+            return idealFilter
+
 
 
     def mul(self, matrix):
@@ -80,34 +77,22 @@ class frequencyFilterClass:
             dist.append(l)
         return dist   
     
-    def ideal(self, dist):
-        #D0 = 20 cool stuff
-        D0 = 10
-        idealFilter = []
-        for i in range(self.h):
-            l = []
-            for j in range(self.w):
-                if dist[i][j]>=D0:
-                    val = 1
-                else:
-                    val = 0
-                l.append(val)
-            idealFilter.append(l)
-        return idealFilter
-
-
-    def start(self, img):
+    def start(self, img, filter):
     
         if self.type =="image":
-            r,g,b = self.splitChannels(img)
+            r,g,b = splitChannels(img)
             r = self.dft(self.mul(r))
             g = self.dft(self.mul(g))
             b = self.dft(self.mul(b))
             
             dist = self.distCalc(self.h,self.w)
-            #M = self.gaussian(dist)
-            #M = self.butterworth(dist) 
-            M = self.ideal(dist)
+
+            if filter == "gaussian":
+                M = self.gaussian(dist)
+            elif filter == "butterworth":
+                M = self.butterworth(dist)
+            elif filter == "ideal":
+                M = self.ideal(dist)
             
             
             x = self.mul(self.idft(np.multiply(r,M)).real)
@@ -120,7 +105,8 @@ class frequencyFilterClass:
                     op[i][j][0] = int(x[i][j])
                     op[i][j][1] = int(y[i][j])
                     op[i][j][2] = int(z[i][j])
-              
+            
+            
             plt.imshow(op)
             plt.show()
 

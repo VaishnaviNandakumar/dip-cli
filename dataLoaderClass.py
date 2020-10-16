@@ -4,6 +4,7 @@ import yaml
 from PIL import Image
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
+import cv2
 #import skimage.transform as st
 
 from spatialFilters import spatialFilterClass
@@ -18,6 +19,7 @@ class dataLoader:
         self.type    = cfg["type"]
         self.spatial = cfg["spatial"]
         self.frequency = cfg["frequency"]
+        self.cfg = cfg
         self.objS = spatialFilterClass(cfg)
         self.objF = frequencyFilterClass(cfg)
         
@@ -44,6 +46,9 @@ class dataLoader:
 
     def execute(self):
         self.loadImage()
+        
+        
+            
 
         if self.spatial:
             for i in self.spatial:
@@ -54,8 +59,10 @@ class dataLoader:
         if self.frequency:
             for i in self.frequency:
                 if self.frequency[i] is True:
-                    method = getattr(self.objF,i)
-                    method(self.img)
+                    self.objF.start(self.img,i)
+                    
+                    
+        
 
         def save(self):
             #Save function
