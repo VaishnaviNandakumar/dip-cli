@@ -59,6 +59,12 @@ class dataLoader:
 
         def save(self):
             #Save function
+            #text file
+            file_object  = open("filename", "mode") 
+            file_object.write()
+
+            #img file
+            img = img.save("Filter-Image.jpg") 
             pass
 
         
