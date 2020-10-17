@@ -22,3 +22,10 @@ def splitChannels(mat, h, w):
             greenChannel.append(l2)
             blueChannel.append(l3)
         return redChannel, greenChannel, blueChannel
+
+def display(type, img):
+    if type == "image":
+        plt.imshow(img)
+        plt.show()
+    else:
+        print(img)

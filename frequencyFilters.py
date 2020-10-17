@@ -31,20 +31,20 @@ class frequencyFilterClass:
             butterworthFilter.append(l)
         return butterworthFilter
     
-        def ideal(self, dist):
-            #D0 = 20 cool stuff
-            D0 = 10
-            idealFilter = []
-            for i in range(self.h):
-                l = []
-                for j in range(self.w):
-                    if dist[i][j]>=D0:
-                        val = 1
-                    else:
-                        val = 0
-                    l.append(val)
-                idealFilter.append(l)
-            return idealFilter
+    def ideal(self, dist):
+        #D0 = 20 cool stuff
+        D0 = 10
+        idealFilter = []
+        for i in range(self.h):
+            l = []
+            for j in range(self.w):
+                if dist[i][j]>=D0:
+                    val = 1
+                else:
+                    val = 0
+                l.append(val)
+            idealFilter.append(l)
+        return idealFilter
 
     def mul(self, matrix):
         for i in range(self.h):
@@ -97,19 +97,13 @@ class frequencyFilterClass:
                     op[i][j][0] = int(x[i][j])
                     op[i][j][1] = int(y[i][j])
                     op[i][j][2] = int(z[i][j])
-            
-            
-            plt.imshow(op)
-            plt.show()
-
-            
+             
         else:
             img  = self.dft(self.mul(img))
             op = self.mul(self.idft(np.multiply(img,M)).real)
-            print(op)
-            plt.imshow(op)
-            plt.show()
-
+            
+        
+        display(self.cfg["type"], op)
             
 
      

@@ -1,11 +1,14 @@
 from base import *
 
 class spatialFilterClass:
+    
     def __init__(self, cfg):
+        self.cfg = cfg
         self.h = cfg["height"]
         self.w = cfg["width"]
-        self.type = cfg["type"]
- 
+        self.answer = []
+        
+
     def conv(self,mat1, mat2):
         val = np.dot(mat1, mat2)
         return np.sum(val)
@@ -51,7 +54,7 @@ class spatialFilterClass:
                         l.append(imgPadded[k][q])
                     mat.append(l)
 
-                if self.type == "image":
+                if self.cfg["type"] == "image":
                     val = self.statFilter(mat, filter)
                     x = list(val)
                 else:
@@ -63,72 +66,51 @@ class spatialFilterClass:
         return ans
         
 
-    #Main Function - Laplace Filter
     def laplacian(self, imgPadded):
         #Laplacian Filter
         laplacianFilter = np.array([[0,1,0],[1,-4,1],[0,1,0]])
         filter = laplacianFilter
-        answer = self.block(imgPadded, filter)
-        plt.imshow(answer)
-        #print(ans)
-        plt.show()
-
-
-    #Main Function - Sobel Filter
+        self.answer = self.block(imgPadded, filter)
+        
     def sobel(self,imgPadded): 
         #Sobel Filter
         sobelX = np.array([[-1,-2,-1],[0,0,0],[1,2,1]])
         sobelY = np.array([[-1,0,1],[-2,0,2],[-1,0,1]])
-
-        #Setting Filter
         filterX = sobelX
         filterY = sobelY
-        
         val1 = self.block(imgPadded, filterX)
         val2 = self.block(imgPadded, filterY)        
-        answer = np.add(val1, val2)  
-        plt.imshow(answer)
-        print(answer[0][0])
-        #plt.show()
-
-
-    #Main Function - Prewitt Filter
+        self.answer = np.add(val1, val2)  
+       
+   
     def prewitt(self,imgPadded): 
         #Prewitt Filter
         prewittX =  np.array([[-1,-1,-1],[0,0,0],[1,1,1]])
         prewittY = np.array([[-1,0,1],[-1,0,1],[-1,0,1]])
-        #Setting Filter
         filterX = prewittX
         filterY = prewittY
-
         val1 = self.block(imgPadded, filterX)
         val2 = self.block(imgPadded, filterY)        
-        answer = np.add(val1, val2)  
-        plt.imshow(answer)
-        plt.show()
-
-    
+        self.answer = np.add(val1, val2)  
+           
     def max(self, imgPadded):
         filter = "max"
-        answer = self.block(imgPadded, filter)
-        plt.imshow(answer)
-        plt.show()
-
+        self.answer = self.block(imgPadded, filter)
+       
     def min(self, imgPadded):
         filter = "min"
-        answer = self.block(imgPadded, filter)
-        plt.imshow(answer)
-        plt.show()
+        self.answer = self.block(imgPadded, filter)
+       
 
     def median(self, imgPadded):
         filter = "median"
-        answer = self.block(imgPadded, filter)
-        plt.imshow(answer)
-        plt.show()
-
+        self.answer = self.block(imgPadded, filter)
+        
     def avg(self, imgPadded):
         filter = "mean"
-        answer = self.block(imgPadded, filter)
-        plt.imshow(answer)
-        plt.show()
+        self.answer = self.block(imgPadded, filter)
+
+    print("reached")
+    print(self.answer) 
+    #display("image", self.answer)
 
