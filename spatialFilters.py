@@ -10,21 +10,8 @@ class spatialFilterClass:
         val = np.dot(mat1, mat2)
         return np.sum(val)
 
-    def splitChannels(self, mat, filter):
-        redChannel, greenChannel, blueChannel = [] , [] , []
-        for i in range(3):
-            l1, l2, l3 = [] , [] , []
-            for j in range(3):
-                r,g,b = mat[i][j][0], mat[i][j][1], mat[i][j][2]
-                
-                l1.append(r)
-                l2.append(g)
-                l3.append(b)
-
-                redChannel.append(l1)
-                greenChannel.append(l2)
-                blueChannel.append(l3)
-                
+    def statFilter(self, mat, filter):
+        redChannel, greenChannel, blueChannel = splitChannels(mat, 3,3)       
         if filter == "max":
             x  = np.array(redChannel).max()
             y  = np.array(greenChannel).max()
@@ -65,7 +52,7 @@ class spatialFilterClass:
                     mat.append(l)
 
                 if self.type == "image":
-                    val = self.splitChannels(mat, filter)
+                    val = self.statFilter(mat, filter)
                     x = list(val)
                 else:
                     val = self.conv(mat,filter)

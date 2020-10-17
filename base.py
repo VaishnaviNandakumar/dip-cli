@@ -6,9 +6,8 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 from scipy import stats
 
-h = 300
-w = 300
-def splitChannels(mat):
+
+def splitChannels(mat, h, w):
         redChannel, greenChannel, blueChannel = [] , [] , []
         for i in range(h):
             l1, l2, l3 = [] , [] , []
