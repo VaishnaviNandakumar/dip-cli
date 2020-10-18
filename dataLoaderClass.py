@@ -1,12 +1,4 @@
-import numpy as np
-import pandas as pd
-import yaml
-from PIL import Image
-import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
-import cv2
-#import skimage.transform as st
-
+from base import *
 from spatialFilters import spatialFilterClass
 from frequencyFilters import frequencyFilterClass
 
@@ -43,36 +35,32 @@ class dataLoader:
             self.img = np.array(matrix)
             self.imgPadded = np.pad(self.img, [(1, 1), (1, 1)], mode='constant')
                  
-
+         
+    def save(self, ans):
+        if self.type == "image":
+            im = Image.fromarray(ans)
+            im.save("Output.jpeg")
+        else:
+            f  = open("Output", "w") 
+            f.write(str(ans))
+            f.close()
+    
     def execute(self):
-        self.loadImage()
-        
-        
-            
+        self.loadImage()    
 
         if self.spatial:
             for i in self.spatial:
                 if self.spatial[i] is True:
                     method = getattr(self.objS,i)
-                    method(self.imgPadded)
+                    ans = method(self.imgPadded)
         
         if self.frequency:
             for i in self.frequency:
                 if self.frequency[i] is True:
-                    self.objF.start(self.img,i)
-                    
-                    
-        
-
-        def save(self):
-            #Save function
-            #text file
-            file_object  = open("filename", "mode") 
-            file_object.write()
-
-            #img file
-            img = img.save("Filter-Image.jpg") 
-            pass
+                    ans = self.objF.start(self.img,i)
+        display(self.type, ans)        
+        self.save(ans)
+   
 
         
         

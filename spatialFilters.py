@@ -6,9 +6,7 @@ class spatialFilterClass:
         self.cfg = cfg
         self.h = cfg["height"]
         self.w = cfg["width"]
-        self.answer = []
         
-
     def conv(self,mat1, mat2):
         val = np.dot(mat1, mat2)
         return np.sum(val)
@@ -70,7 +68,7 @@ class spatialFilterClass:
         #Laplacian Filter
         laplacianFilter = np.array([[0,1,0],[1,-4,1],[0,1,0]])
         filter = laplacianFilter
-        self.answer = self.block(imgPadded, filter)
+        return self.block(imgPadded, filter)
         
     def sobel(self,imgPadded): 
         #Sobel Filter
@@ -80,7 +78,7 @@ class spatialFilterClass:
         filterY = sobelY
         val1 = self.block(imgPadded, filterX)
         val2 = self.block(imgPadded, filterY)        
-        self.answer = np.add(val1, val2)  
+        return np.add(val1, val2)  
        
    
     def prewitt(self,imgPadded): 
@@ -91,26 +89,24 @@ class spatialFilterClass:
         filterY = prewittY
         val1 = self.block(imgPadded, filterX)
         val2 = self.block(imgPadded, filterY)        
-        self.answer = np.add(val1, val2)  
+        return np.add(val1, val2)  
            
     def max(self, imgPadded):
         filter = "max"
-        self.answer = self.block(imgPadded, filter)
-       
+        return self.block(imgPadded, filter)
+          
     def min(self, imgPadded):
         filter = "min"
-        self.answer = self.block(imgPadded, filter)
+        return self.block(imgPadded, filter)
        
 
     def median(self, imgPadded):
-        filter = "median"
-        self.answer = self.block(imgPadded, filter)
+        filter = "median" 
+        return self.block(imgPadded, filter)
         
     def avg(self, imgPadded):
         filter = "mean"
-        self.answer = self.block(imgPadded, filter)
+        return self.block(imgPadded, filter)
 
-    print("reached")
-    print(self.answer) 
-    #display("image", self.answer)
+
 

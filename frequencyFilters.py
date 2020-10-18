@@ -103,7 +103,7 @@ class frequencyFilterClass:
             op = self.mul(self.idft(np.multiply(img,M)).real)
             
         
-        display(self.cfg["type"], op)
+        return op
             
 
      
