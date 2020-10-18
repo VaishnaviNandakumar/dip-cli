@@ -8,6 +8,7 @@ frequency:
   start: false
 height: 300
 path: C:\Users\ACER\Desktop\dip-cli\images\sample.png
+save: true
 spatial:
   avg: false
   gaussian: false
