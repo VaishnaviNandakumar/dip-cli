@@ -12,12 +12,12 @@ save: true
 spatial:
   avg: false
   gaussian: false
-  laplacian: true
+  laplacian: false
   max: false
   median: false
   min: false
   mode: false
   prewitt: false
-  sobel: false
+  sobel: true
 type: image
 width: 300

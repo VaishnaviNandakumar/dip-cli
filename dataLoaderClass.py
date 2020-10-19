@@ -31,6 +31,7 @@ class dataLoader:
     def save(self,ans):
         save_path = "outputs/result"
         if self.cfg["type"] == "image":
+            
             im = Image.fromarray(ans)
             im.save(save_path+".jpg")
         else:

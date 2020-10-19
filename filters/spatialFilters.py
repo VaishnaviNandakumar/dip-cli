@@ -79,7 +79,7 @@ class spatialFilterClass:
         filterY = sobelY
         val1 = self.block(imgPadded, filterX)
         val2 = self.block(imgPadded, filterY)        
-        return np.add(val1, val2)  
+        return np.add(val1, val2) 
        
    
     def prewitt(self,imgPadded): 
