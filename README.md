@@ -4,14 +4,14 @@ A cli tool to implement image processing filters on an image or a sample matrix.
 ### Introduction 
 ## Filters available
 * Spatial Domain
-  - [Laplacian Filter]Laplacian Filter
-  - [Sobel Filter]Sobel Filter
-  - [Prewitt Filter]Prewitt Filter
-  - [Statistical Filters ]Statistical Filters - Mean, Median, Min, Max
+  - [Laplacian Filter](#Laplacian Filter)
+  - [Sobel Filter](#Sobel Filter)
+  - [Prewitt Filter](#Prewitt Filter)
+  - [Statistical Filters ](#Statistical Filters - Mean, Median, Min, Max)
 * Frequency Domain
-  - [Ideal Filter]Ideal Filter
-  - [Gaussian Filter]Gaussian Filter
-  - [Butterworth Filter]Butterworth Filter
+  - [Ideal Filter](#Ideal Filter)
+  - [Gaussian Filter](#Gaussian Filter)
+  - [Butterworth Filter](#Butterworth Filter)
   
 ### Laplacian Filter
 ### Sobel Filter
