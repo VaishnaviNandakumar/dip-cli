@@ -2,7 +2,7 @@ frequency:
   butterworth: false
   dct: false
   dft: false
-  gaussian: false
+  gaussian: true
   haar: false
   ideal: false
   start: false
@@ -18,6 +18,6 @@ spatial:
   min: false
   mode: false
   prewitt: false
-  sobel: true
+  sobel: false
 type: image
 width: 300

@@ -62,7 +62,7 @@ class spatialFilterClass:
                 temp.append(x)
             ans.append(temp)
 
-        return ans
+        return np.array(ans)
         
 
     def laplacian(self, imgPadded):
@@ -78,7 +78,8 @@ class spatialFilterClass:
         filterX = sobelX
         filterY = sobelY
         val1 = self.block(imgPadded, filterX)
-        val2 = self.block(imgPadded, filterY)        
+        val2 = self.block(imgPadded, filterY) 
+        print(val1)       
         return np.add(val1, val2) 
        
    

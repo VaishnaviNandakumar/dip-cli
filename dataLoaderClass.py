@@ -1,4 +1,5 @@
 from base import *
+from matplotlib import pyplot as plt
 from filters.spatialFilters import spatialFilterClass
 from filters.frequencyFilters import frequencyFilterClass
 
@@ -31,9 +32,9 @@ class dataLoader:
     def save(self,ans):
         save_path = "outputs/result"
         if self.cfg["type"] == "image":
+            plt.imshow(ans)
+            plt.savefig(save_path +".jpg")
             
-            im = Image.fromarray(ans)
-            im.save(save_path+".jpg")
         else:
             f  = open(save_path, "w") 
             f.write(str(ans))

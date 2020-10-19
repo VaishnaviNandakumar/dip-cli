@@ -6,7 +6,7 @@ from filters.spatialFilters import spatialFilterClass
 from filters.frequencyFilters import frequencyFilterClass
 
 #python main.py --p C:\Users\ACER\Desktop\dip-cli\samples\sample.png --dim 300x300 --s laplacian
-#python main.py --p C:\Users\ACER\Desktop\dip-cli\images\sample.png --dim 300x300 --f ideal
+#python main.py --p C:\Users\ACER\Desktop\dip-cli\samples\sample.png --dim 300x300 --f ideal
 
 #Parse Arguments
 parser = argparse.ArgumentParser(description='Set up Config File')
