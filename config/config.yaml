@@ -4,15 +4,15 @@ frequency:
   dft: false
   gaussian: false
   haar: false
-  ideal: true
+  ideal: false
   start: false
 height: 300
-path: C:\Users\ACER\Desktop\dip-cli\images\sample.png
+path: C:\Users\ACER\Desktop\dip-cli\samples\sample.png
 save: true
 spatial:
   avg: false
   gaussian: false
-  laplacian: false
+  laplacian: true
   max: false
   median: false
   min: false

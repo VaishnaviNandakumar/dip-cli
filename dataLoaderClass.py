@@ -1,6 +1,6 @@
 from base import *
-from spatialFilters import spatialFilterClass
-from frequencyFilters import frequencyFilterClass
+from filters.spatialFilters import spatialFilterClass
+from filters.frequencyFilters import frequencyFilterClass
 
 
 class dataLoader:
@@ -29,11 +29,12 @@ class dataLoader:
                  
          
     def save(self,ans):
+        save_path = "outputs/result"
         if self.cfg["type"] == "image":
             im = Image.fromarray(ans)
-            im.save("Output2.jpeg")
+            im.save(save_path+".jpg")
         else:
-            f  = open("Output", "w") 
+            f  = open(save_path, "w") 
             f.write(str(ans))
             f.close()
     
@@ -42,20 +43,25 @@ class dataLoader:
         if self.spatial:
             for i in self.spatial:
                 if self.spatial[i] is True:
-                    method = getattr(self.objS,i)
-                    ans = method(self.imgPadded)
-        
+                    try:
+                        method = getattr(self.objS,i)
+                        ans = method(self.imgPadded)
+                    except AttributeError:
+                        ans = None
+
         if self.frequency:
             for i in self.frequency:
                 if self.frequency[i] is True:
                     ans = self.objF.start(self.img,i)
-        
-        if self.cfg["save"]:
-            self.save(ans)
+
+        if ans is None:
+            print("Incorrect Domain / Filter not found ")
         else:
-            display(self.cfg["type"], ans)        
-        
-   
+            if self.cfg["save"]:
+                self.save(ans)
+            else:
+                display(self.cfg["type"], ans)     
+    
 
         
         

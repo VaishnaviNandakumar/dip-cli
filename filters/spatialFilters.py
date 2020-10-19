@@ -7,6 +7,7 @@ class spatialFilterClass:
         self.h = cfg["height"]
         self.w = cfg["width"]
         
+        
     def conv(self,mat1, mat2):
         val = np.dot(mat1, mat2)
         return np.sum(val)

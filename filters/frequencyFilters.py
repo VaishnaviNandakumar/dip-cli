@@ -72,14 +72,16 @@ class frequencyFilterClass:
     
     def start(self, img, filter):
         dist = self.distCalc(self.h,self.w)
-
         if filter == "gaussian":
             M = self.gaussian(dist)
         elif filter == "butterworth":
             M = self.butterworth(dist)
         elif filter == "ideal":
             M = self.ideal(dist)
-            
+        else:
+            return None
+
+   
         if self.cfg["type"] =="image":
             r,g,b = splitChannels(img, self.h, self.w)
             r = self.dft(self.mul(r))
@@ -97,13 +99,13 @@ class frequencyFilterClass:
                     op[i][j][0] = int(x[i][j])
                     op[i][j][1] = int(y[i][j])
                     op[i][j][2] = int(z[i][j])
-             
+            
         else:
             img  = self.dft(self.mul(img))
             op = self.mul(self.idft(np.multiply(img,M)).real)
             
         
         return op
-            
+        
 
      

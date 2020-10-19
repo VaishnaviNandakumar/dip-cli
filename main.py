@@ -2,11 +2,11 @@ import yaml
 import argparse
 import magic
 from dataLoaderClass import dataLoader
-from spatialFilters import spatialFilterClass
-from frequencyFilters import frequencyFilterClass
+from filters.spatialFilters import spatialFilterClass
+from filters.frequencyFilters import frequencyFilterClass
 
-#Sample - python main.py --p C:\Users\ACER\Desktop\dip-cli\images\sample.png --dim 300x300 --s laplacian
-#python main.py --p C:\Users\ACER\Desktop\dip-cli\images\sample.png --dim 300x300 --f start
+#python main.py --p C:\Users\ACER\Desktop\dip-cli\samples\sample.png --dim 300x300 --s laplacian
+#python main.py --p C:\Users\ACER\Desktop\dip-cli\images\sample.png --dim 300x300 --f ideal
 
 #Parse Arguments
 parser = argparse.ArgumentParser(description='Set up Config File')
@@ -57,7 +57,6 @@ def main():
     with open('config\config.yaml', "w") as f:              #Updated Configuration File
         yaml.dump(cfg, f)
         
-    #callFilters(cfg)
     x = dataLoader(cfg)
     imgR = x.execute()
 
