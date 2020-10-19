@@ -6,7 +6,7 @@ A cli tool to implement image processing filters on an image or a sample matrix.
 #### Spatial Domain
 * [Laplacian Filter](#Laplacian-Filter)
 * [Sobel Filter](#Sobel-Filter)
-* [Prewitt Filter] (#Prewitt-Filter)
+* [Prewitt Filter](#Prewitt-Filter)
 * [Statistical Filters ](#Statistical-Filters)
 #### Frequency Domain
 * [Ideal Filter](#Ideal-Filter)
