@@ -23,6 +23,8 @@ frequency :
       butterworth : False
       gaussian : False
       ideal : False
+      d: 20
+      n : 1.2
 
 save: False
       

@@ -5,40 +5,38 @@ class frequencyFilterClass:
         self.cfg = cfg
         self.h = cfg["height"]
         self.w = cfg["width"]
-        
+        self.D0 = int(cfg["frequency"]["d"])
+            
+
     def gaussian(self, dist):
-        D0 = 40
         gaussianFilter = []
         for i in range(self.h):
             l = []
             for j in range(self.w):
-                x = ((dist[i][j]**2))/(2*(D0**2))
+                x = ((dist[i][j]**2))/(2*(self.D0**2))
                 val = math.exp(-x)
                 l.append(val)
             gaussianFilter.append(l)
         return gaussianFilter
     
     def  butterworth(self, dist):
-        D0 = 20
         n = 1.2
         butterworthFilter = []
         for i in range(self.h):
             l = []
             for j in range(self.w):
-                x = (dist[i][j]/D0)**(2*n)
+                x = (dist[i][j]/self.D0)**(2*n)
                 val = 1/(1+x)
                 l.append(val)
             butterworthFilter.append(l)
         return butterworthFilter
     
     def ideal(self, dist):
-        #D0 = 20 cool stuff
-        D0 = 10
         idealFilter = []
         for i in range(self.h):
             l = []
             for j in range(self.w):
-                if dist[i][j]>=D0:
+                if dist[i][j]>=self.D0:
                     val = 1
                 else:
                     val = 0

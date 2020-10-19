@@ -15,6 +15,8 @@ parser.add_argument('--p', type=str, default="", required= False, help='Path to 
 parser.add_argument('--dim', type=str, default="", required= False, help='Dimensions of Img/matrix')
 parser.add_argument('--s', type=str, required = False , help='Filters in spatial domain separated by commas')
 parser.add_argument('--f', type=str, required = False , help='Filters in frequency domain separated by commas')
+parser.add_argument('--d', required = False , help='Store threshold value for frequency filter')
+parser.add_argument('--n', required = False , help='Store n value for frequency filter')
 parser.add_argument('--save', required = False , action='store_true', help='To save output file or not')
 args = parser.parse_args()
 
@@ -53,6 +55,12 @@ def main():
         
         if args.save:
             cfg["save"] = True
+        
+        if bool(args.d):
+            cfg["frequency"]["d"] = args.d
+        
+        if bool(args.n):
+            cfg["frequency"]["n"] = args.n
 
     with open('config\config.yaml', "w") as f:              #Updated Configuration File
         yaml.dump(cfg, f)

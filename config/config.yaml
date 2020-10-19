@@ -1,14 +1,16 @@
 frequency:
-  butterworth: false
+  butterworth: true
+  d: '20'
   dct: false
   dft: false
-  gaussian: true
+  gaussian: false
   haar: false
   ideal: false
+  n: '1.4'
   start: false
 height: 300
 path: C:\Users\ACER\Desktop\dip-cli\samples\sample.png
-save: true
+save: false
 spatial:
   avg: false
   gaussian: false
