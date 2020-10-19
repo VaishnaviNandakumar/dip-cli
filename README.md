@@ -5,22 +5,33 @@ A cli tool to implement image processing filters on an image or a sample matrix.
 ### Filters available
 #### Spatial Domain
 * [Laplacian Filter](#Laplacian-Filter)
-* [Sobel Filter](#Sobel Filter)
-* [Prewitt Filter] (#Prewitt Filter)
-* [Statistical Filters ](#Statistical Filters - Mean, Median, Min, Max)
+* [Sobel Filter](#Sobel-Filter)
+* [Prewitt Filter] (#Prewitt-Filter)
+* [Statistical Filters ](#Statistical-Filters)
 #### Frequency Domain
-* [Ideal Filter](#Ideal Filter)
-* [Gaussian Filter](#Gaussian Filter)
-* [Butterworth Filter](#Butterworth Filter)
+* [Ideal Filter](#Ideal-Filter)
+* [Gaussian Filter](#Gaussian-Filter)
+* [Butterworth Filter](#Butterworth-Filter)
   
 <a name="Laplacian-Filter"></a>
 ### Laplacian Filter
+
+<a name="Sobel-Filter"></a>
 ### Sobel Filter
+
+<a name="Prewitt-Filter"></a>
 ### Prewitt Filter
+
+<a name="Statistical-Filters"></a>
 ### Statistical Filters 
-  
+
+<a name="Ideal-Filter"></a> 
 ### Ideal Filter
+
+<a name="Gaussian-Filter"></a>
 ### Gaussian Filter
+
+<a name="Butterworth-Filter"></a>
 ### Butterworth Filter
 
 
