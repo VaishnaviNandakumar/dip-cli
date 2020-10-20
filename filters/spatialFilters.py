@@ -78,8 +78,7 @@ class spatialFilterClass:
         filterX = sobelX
         filterY = sobelY
         val1 = self.block(imgPadded, filterX)
-        val2 = self.block(imgPadded, filterY) 
-        print(val1)       
+        val2 = self.block(imgPadded, filterY)     
         return np.add(val1, val2) 
        
    
@@ -106,7 +105,7 @@ class spatialFilterClass:
         filter = "median" 
         return self.block(imgPadded, filter)
         
-    def avg(self, imgPadded):
+    def mean1(self, imgPadded):
         filter = "mean"
         return self.block(imgPadded, filter)
 

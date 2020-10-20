@@ -1,25 +1,23 @@
 frequency:
-  butterworth: true
-  d: '20'
+  butterworth: false
+  d: 20
   dct: false
   dft: false
   gaussian: false
-  haar: false
   ideal: false
-  n: '1.4'
+  n: 1.2
   start: false
 height: 300
-path: C:\Users\ACER\Desktop\dip-cli\samples\sample.png
+path: C:\Users\ACER\Desktop\dip-cli\samples\image1.jpg
 save: false
 spatial:
-  avg: false
   gaussian: false
   laplacian: false
   max: false
+  mean: false
   median: false
   min: false
-  mode: false
   prewitt: false
-  sobel: false
+  sobel: true
 type: image
 width: 300
