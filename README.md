@@ -48,3 +48,5 @@ python main.py --p \dip-cli\samples\test.txt --dim 3x3 --f gaussian --d 10 --n 1
 ```
 
 ## Sample Outputs
+![Spatial Domain](https://github.com/VaishnaviNandakumar/dip-cli/blob/master/outputs/Spatial-Domain-Outputs.jpg)
+![Frequency Domain](https://github.com/VaishnaviNandakumar/dip-cli/blob/master/outputs/Frequency-Domain-Outputs.jpg)
