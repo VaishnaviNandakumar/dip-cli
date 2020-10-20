@@ -2,6 +2,8 @@
 A cli tool to implement image processing filters on an image or a sample matrix.
 
 ### Introduction 
+Digital image processing can be defined as the manipulation of images using specific algorithms for the purpose of feature extraction. This process can be done in several domains. In the spatial domain, we use the images just as they are and apply the required filters through a process called <b>covolution</b>. Whereas, to work with an image in the frequency domain, the conversion of an image to its frequency distribution is neccessary. This is done using a process called <b>transformation</b>. Some examples of the transformations that can be used are  - Discrete Fourier Transform, Discrete Cosine Transform and the Laplace Transform.
+
 ### Filters available
 #### Spatial Domain
 * [Laplacian Filter](#Laplacian-Filter)
